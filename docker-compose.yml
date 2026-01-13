@@ -1,0 +1,17 @@
+# ملاحظة: تم حذف السطر "version: '3.8'" لأنه أصبح قديماً
+services:
+  hrm_postgres_db:
+    image: postgres:13
+    container_name: hrm_postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: hrm_db
+      POSTGRES_USER: hrm_user
+      POSTGRES_PASSWORD: super_secret_password  # <-- كلمة المرور الموحدة
+    ports:
+      - "5432:5432"
+    volumes:
+      - hrm_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  hrm_postgres_data:
